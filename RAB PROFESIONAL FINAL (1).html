@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalkulator RAB Bangunan Profesional | Civil Computing</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<style>
+:root {
+  --primary: #2c3e50;
+  --primary-dark: #1a252f;
+  --secondary: #3498db;
+  --secondary-dark: #2980b9;
+  --accent: #e74c3c;
+  --accent-dark: #c0392b;
+  --light: #ecf0f1;
+  --dark: #2c3e50;
+  --success: #27ae60;
+  --success-dark: #219653;
+  --warning: #f39c12;
+  --warning-dark: #e67e22;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc;
+  color: #333;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Background Particles */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+/* Header & Navigation */
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logo i {
+  color: var(--accent);
+  margin-right: 0.75rem;
+  font-size: 1.8rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent);
+  transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 152, 219, 0.9) 100%);
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Main Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border-top: 5px solid var(--accent);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(52, 152, 219, 0.05) 100%);
+  z-index: -1;
+}
+.hidden {
+    display: none !important;
+}
+.card-title {
+  color: var(--primary);
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.card-title i {
+  margin-right: 15px;
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: #f9f9f9;
+}
+
+.form-control:focus {
+  border-color: var(--secondary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  background-color: white;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn i {
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-dark);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+.btn-success {
+  background-color: var(--success);
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.btn-success:hover {
+  background-color: var(--success-dark);
+  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* Options Grid */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.option-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
+}
+
+.option-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.option-card.selected {
+  border-color: var(--accent);
+  background-color: #fef6f6;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+.option-card img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.option-card:hover img {
+  transform: scale(1.05);
+}
+
+.option-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+}
+
+.option-detail {
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.option-detail i {
+  margin-right: 8px;
+  color: var(--secondary);
+}
+
+.option-price {
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.option-price i {
+  margin-right: 8px;
+}
+
+/* Results Section */
+.result-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 3rem;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  opacity: 0.03;
+  z-index: -1;
+}
+
+.result-title {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.result-title i {
+  margin-right: 15px;
+  color: var(--success);
+  font-size: 2rem;
+}
+
+.result-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.result-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  padding-left: 15px;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-total {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: var(--radius);
+  border-left: 5px solid var(--accent);
+  animation: fadeInUp 1s both;
+}
+
+/* Step Indicator */
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.step {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ddd;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.step.active {
+  background-color: var(--accent);
+  color: white;
+  transform: scale(1.1);
+}
+
+.step.completed {
+  background-color: var(--success);
+  color: white;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background-color: #ddd;
+  left: 100%;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.step.completed:not(:last-child)::after {
+  background-color: var(--success);
+}
+
+/* Progress Bar */
+.progress-container {
+  margin-bottom: 3rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
+  width: 0;
+  transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.8) 50%, 
+    rgba(255,255,255,0) 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.data-table th, .data-table td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.data-table th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.data-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.edit-btn {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background-color: var(--accent);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+/* Search & Sort */
+.search-sort {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.search-box, .sort-select {
+  flex: 1;
+}
+
+/* Features Section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.feature-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.2);
+  color: var(--secondary);
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.feature-desc {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo i {
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+.footer-about p {
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.footer-links h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-links h3::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent);
+  bottom: 0;
+  left: 0;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a:hover {
+  color: white;
+  padding-left: 5px;
+}
+
+.footer-links a i {
+  margin-right: 8px;
+  color: var(--accent);
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.footer-contact i {
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .options-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  
+  .hero {
+    padding: 7rem 0 3rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .step-indicator {
+    flex-wrap: wrap;
+  }
+  
+  .step {
+    margin: 0 10px 20px;
+  }
+  
+  .step:not(:last-child)::after {
+    display: none;
+  }
+  
+  .search-sort {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Floating Elements */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  border-radius: var(--radius);
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--primary) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Confetti Effect */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent);
+  opacity: 0;
+  animation: confetti-fall 5s linear forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.modal.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printSection, #printSection * {
+    visibility: visible;
+  }
+  #printSection {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <i class="fas fa-building"></i>
+        <span>Civil computing</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Fitur</a>
+        <a href="#calculator">Kalkulator</a>
+        <a href="#about">Tentang</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="animate__animated animate__fadeInDown">Kalkulator RAB Bangunan <span class="highlight">Profesional</span></h1>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Solusi canggih untuk menghitung Rencana Anggaran Biaya konstruksi dengan presisi tinggi dan visualisasi 3D</p>
+      <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
+        <button class="btn btn-secondary" onclick="startCalculation()">
+          <i class="fas fa-play"></i> Mulai Sekarang
+        </button>
+        <button class="btn" onclick="tampilkanDemo()">
+          <i class="fas fa-video"></i> Lihat Demo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Features Section -->
+    <section id="features" class="features-section" data-aos="fade-up">
+      <h2 class="section-title">Fitur Unggulan Kami</h2>
+      <p class="section-subtitle">Alat profesional untuk kebutuhan konstruksi Anda</p>
+      
+      <div class="features">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="feature-title">Perhitungan Akurat</h3>
+          <p class="feature-desc">Algoritma canggih menghitung biaya konstruksi dengan presisi tinggi berdasarkan standar industri.</p>
+        </div>
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3 class="feature-title">Visualisasi 3D</h3>
+          <p class="feature-desc">Lihat model 3D struktur bangunan Anda dengan detail material dan komponen konstruksi.</p>
+        </div>
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <h3 class="feature-title">Laporan Profesional</h3>
+          <p class="feature-desc">Hasil perhitungan dapat diekspor dalam format PDF, Excel, atau CSV untuk kebutuhan dokumentasi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator">
+      <!-- Welcome Screen -->
+      <div id="welcomeScreen" class="card card-3d" data-aos="zoom-in">
+        <div class="card-title"><i class="fas fa-home"></i> Selamat Datang di Kalkulator RAB</div>
+        <div style="text-align: center;">
+          <i class="fas fa-building feature-icon floating"></i>
+          <h2>Rencana Anggaran Biaya Bangunan</h2>
+          <p style="max-width: 700px; margin: 0 auto 2rem;">
+            Aplikasi profesional ini membantu Anda menghitung estimasi biaya pembangunan untuk berbagai komponen struktur dengan presisi tinggi. 
+            Dilengkapi dengan database material terbaru dan standar konstruksi terkini untuk hasil yang akurat.
+          </p>
+          <div class="tooltip">
+            <button class="btn btn-block" onclick="startCalculation()" style="max-width: 300px; margin: 0 auto;">
+              <i class="fas fa-play"></i> Mulai Perhitungan
+            </button>
+            <span class="tooltiptext">Klik untuk memulai perhitungan RAB bangunan Anda</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Indicator -->
+      <div id="stepIndicator" class="step-indicator hidden" data-aos="fade-down">
+        <div class="step" id="step1">1</div>
+        <div class="step" id="step2">2</div>
+        <div class="step" id="step3">3</div>
+        <div class="step" id="step4">4</div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div id="progressContainer" class="hidden" data-aos="fade-down">
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Step Container -->
+      <div id="stepContainer" class="hidden"></div>
+
+      <!-- Results -->
+      <div id="resultBox" class="card hidden" data-aos="zoom-in">
+        <div class="card-title"><i class="fas fa-file-invoice-dollar"></i> Hasil Perhitungan RAB</div>
+        <div id="resultDetails"></div>
+        
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <button class="btn btn-secondary" onclick="cetakRAB()">
+            <i class="fas fa-print"></i> Cetak RAB
+          </button>
+          <button class="btn btn-success" onclick="simpanSebagaiPDF()">
+            <i class="fas fa-file-pdf"></i> Simpan PDF
+          </button>
+          <button class="btn" onclick="bagikanHasil()">
+            <i class="fas fa-share-alt"></i> Bagikan
+          </button>
+        </div>
+      </div>
+
+      <!-- Data Management -->
+      <div id="crudBox" class="card hidden" data-aos="zoom-in">
+        <div class="card-title"><i class="fas fa-database"></i> Manajemen Data RAB</div>
+        <div class="search-sort">
+          <div class="search-box">
+            <input type="text" id="searchInput" class="form-control" placeholder="Cari komponen...">
+          </div>
+          <div class="sort-select">
+            <select id="sortSelect" class="form-control">
+              <option value="">Urutkan berdasarkan</option>
+              <option value="asc">Total Termurah</option>
+              <option value="desc">Total Termahal</option>
+              <option value="date">Tanggal Terbaru</option>
+            </select>
+          </div>
+        </div>
+        <div id="dataList"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section" data-aos="fade-up">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-info-circle"></i> Tentang Kalkulator Ini</div>
+        <div style="display: flex; gap: 2rem; align-items: center;">
+          <div style="flex: 1;">
+            <h3>Teknologi Canggih untuk Konstruksi Modern</h3>
+            <p>Kalkulator RAB ini dikembangkan oleh tim ahli sipil dan programmer berpengalaman untuk memberikan solusi perhitungan anggaran konstruksi yang akurat dan mudah digunakan.</p>
+            <p>Dengan database material yang selalu diperbarui dan algoritma perhitungan yang presisi, Anda dapat mempercayakan perencanaan anggaran proyek Anda pada alat ini.</p>
+            <button class="btn" style="margin-top: 1rem;">
+              <i class="fas fa-book"></i> Pelajari Lebih Lanjut
+            </button>
+          </div>
+          <div style="flex: 1;">
+            <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Construction" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow);">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <i class="fas fa-building"></i>
+          <span>Civil computing</span>
+        </div>
+        <p>Menyediakan solusi digital untuk kebutuhan konstruksi dan sipil profesional sejak 2025.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/fiqlhm/"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="#features"><i class="fas fa-chevron-right"></i> Fitur</a></li>
+          <li><a href="#calculator"><i class="fas fa-chevron-right"></i> Kalkulator</a></li>
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Layanan</h3>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Konsultasi Proyek</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Pelatihan</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Integrasi API</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Dukungan Teknis</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Pembaruan</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h3>Hubungi Kami</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Jl. D.I Panjaitan, Karang Rejo Balikpapan tengah</p>
+        <p><i class="fas fa-phone-alt"></i> +6285650800896</p>
+        <p><i class="fas fa-envelope"></i> aqtaufiqul25@gmail.com</p>
+        <p><i class="fas fa-clock"></i> Senin-Jumat: 08.00 - 17.00</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025  Digital. Seluruh hak cipta dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- Confetti Container -->
+  <div id="confettiContainer" class="confetti-container"></div>
+
+  <!-- Modal -->
+  <div id="demoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-video"></i> Demo Kalkulator RAB</h3>
+        <button class="modal-close" onclick="tutupModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+        </div>
+        <p style="margin-top: 1.5rem;">Tonton video demo untuk mempelajari cara menggunakan kalkulator RAB kami secara efektif.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Print Section (Hidden) -->
+  <div id="printSection" style="display: none;"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+
+    // Initialize Particles.js
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Calculator Logic
+    const steps = [
+      { 
+        name: "Pondasi", 
+        harga: 750000,
+        deskripsi: "Pondasi adalah bagian paling bawah dari struktur bangunan yang berfungsi meneruskan beban bangunan ke tanah.",
+        opsi: [
+          { 
+            nama: "Batu Kali", 
+            luas: 0.27, 
+            gambar: "https://i.imgur.com/7RknD28.jpeg",
+            deskripsi: "Pondasi batu kali cocok untuk tanah stabil dengan daya dukung baik. Biaya relatif murah dan mudah pengerjaannya."
+          },
+          { 
+            nama: "Foot Plat", 
+            luas: 0.35, 
+            gambar: "https://i.imgur.com/4QCALtl.jpeg",
+            deskripsi: "Pondasi foot plat digunakan untuk bangunan bertingkat pada tanah dengan daya dukung sedang."
+          },
+          { 
+            nama: "Strauss Pile", 
+            luas: 0.255, 
+            gambar: "https://i.imgur.com/5kz2i68.jpeg",
+            deskripsi: "Pondasi strauss pile cocok untuk tanah lunak dengan kedalaman tertentu untuk mencapai tanah keras."
+          }
+        ]
+      },
+      {
+        name: "Sloof",
+        harga: 650000,
+        deskripsi: "Sloof adalah struktur beton bertulang yang diletakkan di atas pondasi untuk meratakan beban ke pondasi.",
+        opsi: [
+          { 
+            nama: "15x20 cm", 
+            luas: 0.04, 
+            gambar: "https://i.imgur.com/0A8VkTn.jpeg",
+            deskripsi: "Sloof ukuran 15x20 cm cocok untuk bangunan sederhana 1 lantai dengan beban ringan."
+          },
+          { 
+            nama: "20x20 cm", 
+            luas: 0.05, 
+            gambar: "https://i.imgur.com/8VV7YPP.jpeg",
+            deskripsi: "Sloof ukuran 20x20 cm untuk bangunan 1-2 lantai dengan beban sedang."
+          },
+          { 
+            nama: "15x15 cm", 
+            luas: 0.03, 
+            gambar: "https://i.imgur.com/7f5Zln5.jpeg",
+            deskripsi: "Sloof ukuran 15x15 cm biasanya untuk bangunan non struktural atau pembatas."
+          }
+        ]
+      },
+      {
+        name: "Kolom",
+        harga: 700000,
+        deskripsi: "Kolom adalah elemen vertikal yang berfungsi menyalurkan beban dari balok ke pondasi.",
+        opsi: [
+          { 
+            nama: "20x20 cm", 
+            luas: 0.03, 
+            gambar: "https://i.imgur.com/qlXqOSm.jpeg",
+            deskripsi: "Kolom 20x20 cm cocok untuk bangunan rumah tinggal 1-2 lantai."
+          },
+          { 
+            nama: "25x25 cm", 
+            luas: 0.04, 
+            gambar: "https://i.imgur.com/Rc9V6F2.jpeg",
+            deskripsi: "Kolom 25x25 cm untuk bangunan 2-3 lantai atau dengan beban lebih besar."
+          },
+          { 
+            nama: "15x30 cm", 
+            luas: 0.025, 
+            gambar: "https://i.imgur.com/EL70h6C.jpeg",
+            deskripsi: "Kolom 15x30 cm biasanya digunakan sebagai kolom praktis atau kolom estetika."
+          }
+        ]
+      },
+      {
+        name: "Balok",
+        harga: 680000,
+        deskripsi: "Balok adalah elemen horizontal yang menyalurkan beban dari pelat lantai ke kolom.",
+        opsi: [
+          { 
+            nama: "15x30 cm", 
+            luas: 0.05, 
+            gambar: "https://i.imgur.com/xfevhN5.jpeg",
+            deskripsi: "Balok 15x30 cm untuk bentangan sedang (4-6m) pada bangunan 1-2 lantai."
+          },
+          { 
+            nama: "20x40 cm", 
+            luas: 0.06, 
+            gambar: "https://i.imgur.com/oSDdjgz.jpeg",
+            deskripsi: "Balok 20x40 cm untuk bentangan panjang (6-8m) atau bangunan 2-3 lantai."
+          },
+          { 
+            nama: "20x30 cm", 
+            luas: 0.045, 
+            gambar: "https://i.imgur.com/qqOntno.jpeg",
+            deskripsi: "Balok 20x30 cm kompromi antara kekuatan dan efisiensi material."
+          }
+        ]
+      }
+    ];
+
+    let currentStep = 0;
+    let totalData = [];
+    let savedProjects = JSON.parse(localStorage.getItem("savedProjects")) || [];
+
+    function startCalculation() {
+      document.getElementById("welcomeScreen").classList.add("hidden");
+      document.getElementById("stepIndicator").classList.remove("hidden");
+      document.getElementById("progressContainer").classList.remove("hidden");
+      document.getElementById("stepContainer").classList.remove("hidden");
+      updateStepIndicator();
+      renderStep();
+      
+      // Animate the step container
+      const stepContainer = document.getElementById("stepContainer");
+      stepContainer.style.opacity = 0;
+      setTimeout(() => {
+        stepContainer.style.transition = "opacity 0.5s ease";
+        stepContainer.style.opacity = 1;
+      }, 100);
+    }
+
+    function updateStepIndicator() {
+      const steps = document.querySelectorAll('.step');
+      steps.forEach((step, index) => {
+        if (index < currentStep) {
+          step.classList.add('completed');
+          step.classList.remove('active');
+        } else if (index === currentStep) {
+          step.classList.add('active');
+          step.classList.remove('completed');
+        } else {
+          step.classList.remove('active', 'completed');
+        }
+      });
+      
+      // Update progress bar
+      const progress = (currentStep / (steps.length - 1)) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+    }
+
+    function renderStep() {
+      const step = steps[currentStep];
+      const container = document.getElementById("stepContainer");
+      container.innerHTML = `
+        <div class="card card-3d">
+          <div class="card-title"><i class="fas fa-${getStepIcon(currentStep)}"></i> Langkah ${currentStep + 1}: ${step.name}</div>
+          <p style="margin-bottom: 1.5rem; color: #666;">${step.deskripsi}</p>
+          
+          <div class="form-group">
+            <label>Pilih Tipe ${step.name}:</label>
+            <select id="tipeSelect" class="form-control" onchange="selectOption(this.value)">
+              ${step.opsi.map((opsi, i) => `
+                <option value="${i}">${step.name} - ${opsi.nama}</option>
+              `).join('')}
+            </select>
+          </div>
+          
+          <div class="options-grid">
+            ${step.opsi.map((opsi, index) => `
+              <div class="option-card" onclick="selectOption(${index})" id="option-${index}">
+                <img src="${opsi.gambar}" alt="${opsi.nama}">
+                <div class="option-title">${step.name} - ${opsi.nama}</div>
+                <div class="option-detail"><i class="fas fa-ruler-combined"></i> Luas Penampang: ${opsi.luas} m²</div>
+                <div class="option-detail"><i class="fas fa-info-circle"></i> ${opsi.deskripsi.substring(0, 60)}...</div>
+                <div class="option-detail"><i class="fas fa-tag"></i> Harga per m³: Rp ${step.harga.toLocaleString('id-ID')}</div>
+                <div class="option-price"><i class="fas fa-coins"></i> Rp ${(opsi.luas * step.harga).toLocaleString('id-ID')}/m</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <div class="form-group">
+            <label for="panjangInput">${step.name === "Kolom" ? "Tinggi Kolom (m)" : `Panjang ${step.name} (m)`}:</label>
+            <input type="number" id="panjangInput" class="form-control" placeholder="Masukkan panjang" min="0.1" step="0.01" value="1">
+          </div>
+          
+          <div style="display: flex; gap: 1rem;">
+            ${currentStep > 0 ? `
+              <button class="btn btn-secondary" onclick="kembaliKeLangkahSebelumnya()" style="flex: 1;">
+                <i class="fas fa-arrow-left"></i> Kembali
+              </button>
+            ` : ''}
+            <button class="btn" onclick="hitungLangkah()" style="flex: ${currentStep > 0 ? '1' : '1'}">
+              ${currentStep === steps.length - 1 ? '<i class="fas fa-calculator"></i> Hitung Total' : '<i class="fas fa-arrow-right"></i> Lanjut'}
+            </button>
+          </div>
+        </div>
+      `;
+      
+      // Select first option by default
+      selectOption(0);
+      
+      // Add animation to options
+      setTimeout(() => {
+        document.querySelectorAll('.option-card').forEach((card, i) => {
+          card.style.opacity = 0;
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = `all 0.5s ease ${i * 0.1}s`;
+          setTimeout(() => {
+            card.style.opacity = 1;
+            card.style.transform = 'translateY(0)';
+          }, 100);
+        });
+      }, 100);
+    }
+
+    function getStepIcon(stepIndex) {
+      const icons = ['layer-group', 'ruler-horizontal', 'vector-square', 'grip-lines'];
+      return icons[stepIndex] || 'cube';
+    }
+
+    function selectOption(index) {
+      document.querySelectorAll('.option-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById(`option-${index}`).classList.add('selected');
+      document.getElementById('tipeSelect').value = index;
+    }
+
+    function kembaliKeLangkahSebelumnya() {
+      if (currentStep > 0) {
+        totalData.pop(); // Remove last data
+        currentStep--;
+        updateStepIndicator();
+        renderStep();
+        
+        // Animate transition
+        const stepContainer = document.getElementById("stepContainer");
+        stepContainer.style.animation = 'none';
+        setTimeout(() => {
+          stepContainer.style.animation = 'slideInLeft 0.5s ease';
+        }, 10);
+      }
+    }
+
+    function hitungLangkah() {
+      const panjang = parseFloat(document.getElementById("panjangInput").value);
+      const tipeIndex = parseInt(document.getElementById("tipeSelect").value);
+      const step = steps[currentStep];
+      const opsi = step.opsi[tipeIndex];
+
+      if (isNaN(panjang)) {
+        alert("Masukkan panjang yang valid.");
+        document.getElementById("panjangInput").focus();
+        return;
+      }
+
+      if (panjang <= 0) {
+        alert("Panjang harus lebih besar dari 0.");
+        document.getElementById("panjangInput").focus();
+        return;
+      }
+
+      const volume = panjang * opsi.luas;
+      const total = volume * step.harga;
+
+      totalData.push({
+        nama: step.name,
+        tipe: opsi.nama,
+        panjang,
+        luas: opsi.luas,
+        harga: step.harga,
+        volume,
+        total,
+        tanggal: new Date().toISOString()
+      });
+
+      currentStep++;
+      if (currentStep < steps.length) {
+        updateStepIndicator();
+        renderStep();
+        
+        // Animate transition
+        const stepContainer = document.getElementById("stepContainer");
+        stepContainer.style.animation = 'none';
+        setTimeout(() => {
+          stepContainer.style.animation = 'slideInRight 0.5s ease';
+        }, 10);
+      } else {
+        tampilkanHasil();
+      }
+    }
+
+    function tampilkanHasil() {
+      document.getElementById("stepContainer").classList.add("hidden");
+      document.getElementById("stepIndicator").classList.add("hidden");
+      document.getElementById("progressContainer").classList.add("hidden");
+      
+      const resultBox = document.getElementById("resultBox");
+      const resultDetails = document.getElementById("resultDetails");
+
+      let totalAkhir = 0;
+      resultDetails.innerHTML = "";
+      
+      totalData.forEach(item => {
+        totalAkhir += item.total;
+        resultDetails.innerHTML += `
+          <div class="result-item" data-aos="fade-up">
+            <h4><i class="fas fa-${getItemIcon(item.nama)}"></i> ${item.nama} (${item.tipe})</h4>
+            <p><i class="fas fa-ruler"></i> Panjang: ${item.panjang} m | Luas: ${item.luas} m²</p>
+            <p><i class="fas fa-cube"></i> Volume: ${item.volume.toFixed(2)} m³</p>
+            <p><i class="fas fa-tag"></i> Harga per m³: Rp ${item.harga.toLocaleString('id-ID')}</p>
+            <p><strong><i class="fas fa-money-bill-wave"></i> Total: Rp ${item.total.toLocaleString('id-ID')}</strong></p>
+          </div>
+        `;
+      });
+     
+      resultDetails.innerHTML += `
+        <div class="result-total" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-coins"></i> Total Keseluruhan: Rp ${totalAkhir.toLocaleString('id-ID')}
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <button class="btn btn-secondary" onclick="hitungUlang()" style="max-width: 300px; margin: 0 auto;">
+            <i class="fas fa-redo"></i> Hitung Ulang
+          </button>
+        </div>
+      `;
+      
+      resultBox.classList.remove("hidden");
+      simpanData();
+      tampilkanData();
+      document.getElementById("crudBox").classList.remove("hidden");
+      
+      // Show confetti celebration
+      buatConfetti();
+      
+      // Scroll to results
+      setTimeout(() => {
+        resultBox.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
+
+    function getItemIcon(itemName) {
+      const icons = {
+        'Pondasi': 'layer-group',
+        'Sloof': 'ruler-horizontal',
+        'Kolom': 'vector-square',
+        'Balok': 'grip-lines'
+      };
+      return icons[itemName] || 'cube';
+    }
+
+    // CRUD Functions
+    function simpanData() {
+      const project = {
+        id: Date.now(),
+        data: [...totalData],
+        total: totalData.reduce((sum, item) => sum + item.total, 0),
+        tanggal: new Date().toISOString(),
+        nama: `Proyek ${new Date().toLocaleDateString()}`
+      };
+      
+      savedProjects.push(project);
+      localStorage.setItem("savedProjects", JSON.stringify(savedProjects));
+    }
+
+    function tampilkanData() {
+      const dataList = document.getElementById("dataList");
+      const semuaData = [...savedProjects].reverse(); // Show newest first
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      const sortBy = document.getElementById("sortSelect").value;
+      
+      // Filter data
+      let filteredData = semuaData.filter(project => 
+        project.data.some(item => 
+          item.nama.toLowerCase().includes(searchTerm) || 
+          item.tipe.toLowerCase().includes(searchTerm)
+        ) ||
+        project.nama.toLowerCase().includes(searchTerm)
+      );
+      
+      // Sort data
+      if (sortBy === "asc") {
+        filteredData.sort((a, b) => a.total - b.total);
+      } else if (sortBy === "desc") {
+        filteredData.sort((a, b) => b.total - a.total);
+      } else if (sortBy === "date") {
+        filteredData.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+      }
+      
+      if (filteredData.length === 0) {
+        dataList.innerHTML = `
+          <div style="text-align: center; padding: 2rem; background: #f9f9f9; border-radius: var(--radius);">
+            <i class="fas fa-inbox" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+            <p style="color: #666;">Belum ada data proyek tersimpan</p>
+          </div>
+        `;
+        return;
+      }
+      
+      dataList.innerHTML = `
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Nama Proyek</th>
+              <th>Detail</th>
+              <th>Total</th>
+              <th>Tanggal</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filteredData.map((project, index) => `
+              <tr data-aos="fade-up" data-aos-delay="${index * 50}">
+                <td>
+                  <strong>${project.nama}</strong><br>
+                  <small>${new Date(project.tanggal).toLocaleDateString()}</small>
+                </td>
+                <td>
+                  ${project.data.length} komponen<br>
+                  <small>${project.data[0].nama}, ${project.data[1]?.nama || ''}, ...</small>
+                </td>
+                <td>Rp ${project.total.toLocaleString('id-ID')}</td>
+                <td>${new Date(project.tanggal).toLocaleDateString()}</td>
+                <td class="data-actions">
+                  <button class="action-btn edit-btn" onclick="lihatProyek(${project.id})">
+                    <i class="fas fa-eye"></i> Lihat
+                  </button>
+                  <button class="action-btn delete-btn" onclick="hapusProyek(${project.id})">
+                    <i class="fas fa-trash"></i> Hapus
+                  </button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function lihatProyek(id) {
+      const project = savedProjects.find(p => p.id === id);
+      if (!project) return;
+      
+      totalData = [...project.data];
+      currentStep = steps.length;
+      updateStepIndicator();
+      tampilkanHasil();
+      
+      // Scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    function hapusProyek(id) {
+      if (!confirm('Apakah Anda yakin ingin menghapus proyek ini?')) return;
+      
+      savedProjects = savedProjects.filter(p => p.id !== id);
+      localStorage.setItem("savedProjects", JSON.stringify(savedProjects));
+      tampilkanData();
+      
+      // If we're viewing this project, reset calculator
+      const currentProjectId = totalData.length > 0 ? 
+        savedProjects.find(p => JSON.stringify(p.data) === JSON.stringify(totalData))?.id : null;
+      
+      if (currentProjectId === id) {
+        hitungUlang();
+      }
+    }
+
+    function hitungUlang() {
+      // Reset semua data dan tampilan
+      currentStep = 0;
+      totalData = [];
+      
+      // Sembunyikan semua elemen hasil
+      document.getElementById("resultBox").classList.add("hidden");
+      document.getElementById("crudBox").classList.add("hidden");
+      
+      // Tampilkan kembali layar awal
+      document.getElementById("welcomeScreen").classList.remove("hidden");
+      
+      // Reset progress indicator
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active', 'completed');
+      });
+      document.getElementById('progressBar').style.width = '0%';
+      
+      // Scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Confetti Effect
+    function buatConfetti() {
+      const container = document.getElementById("confettiContainer");
+      container.innerHTML = '';
+      
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        confetti.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(confetti);
+      }
+      
+      setTimeout(() => {
+        container.innerHTML = '';
+      }, 5000);
+    }
+
+    function getRandomColor() {
+      const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Modal Functions
+    function tampilkanDemo() {
+      document.getElementById("demoModal").classList.add("active");
+      document.body.style.overflow = 'hidden';
+    }
+
+    function tutupModal() {
+      document.getElementById("demoModal").classList.remove("active");
+      document.body.style.overflow = 'auto';
+    }
+
+    // Print Functions
+    function cetakRAB() {
+      const printSection = document.getElementById("printSection");
+      printSection.innerHTML = `
+        <div style="padding: 2rem; font-family: 'Poppins', sans-serif;">
+          <h1 style="text-align: center; color: var(--primary); margin-bottom: 0.5rem;">
+            <i class="fas fa-building"></i> Laporan RAB Bangunan
+          </h1>
+          <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            Dicetak pada ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}
+          </p>
+          
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+            <thead>
+              <tr style="background-color: var(--primary); color: white;">
+                <th style="padding: 12px; text-align: left;">Komponen</th>
+                <th style="padding: 12px; text-align: left;">Detail</th>
+                <th style="padding: 12px; text-align: right;">Volume</th>
+                <th style="padding: 12px; text-align: right;">Harga/m³</th>
+                <th style="padding: 12px; text-align: right;">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${totalData.map(item => `
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px;">
+                    <strong>${item.nama}</strong><br>
+                    <small>${item.tipe}</small>
+                  </td>
+                  <td style="padding: 12px;">
+                    Panjang: ${item.panjang}m<br>
+                    Luas: ${item.luas}m²
+                  </td>
+                  <td style="padding: 12px; text-align: right;">${item.volume.toFixed(2)}m³</td>
+                  <td style="padding: 12px; text-align: right;">Rp ${item.harga.toLocaleString('id-ID')}</td>
+                  <td style="padding: 12px; text-align: right;">Rp ${item.total.toLocaleString('id-ID')}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          <div style="text-align: right; font-size: 1.5rem; font-weight: bold; margin-top: 2rem;">
+            Total RAB: Rp ${totalData.reduce((sum, item) => sum + item.total, 0).toLocaleString('id-ID')}
+          </div>
+          
+          <div style="margin-top: 3rem; display: flex; justify-content: space-between;">
+            <div>
+              <p style="border-top: 1px solid #000; width: 200px; padding-top: 10px; text-align: center;">
+                Penyusun
+              </p>
+            </div>
+            <div>
+              <p style="border-top: 1px solid #000; width: 200px; padding-top: 10px; text-align: center;">
+                Mengetahui
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      window.print();
+    }
+
+    function simpanSebagaiPDF() {
+      // In a real implementation, you would use jsPDF and html2canvas
+      alert("Fitur ekspor PDF akan mengkonversi hasil RAB ke format PDF. Dalam implementasi nyata, ini akan menggunakan library jsPDF.");
+      // Example implementation:
+      // const { jsPDF } = window.jspdf;
+      // const doc = new jsPDF();
+      // doc.text("Laporan RAB Bangunan", 10, 10);
+      // ... add content ...
+      // doc.save("rab-bangunan.pdf");
+    }
+
+    function bagikanHasil() {
+      // In a real implementation, this would share to social media or generate a shareable link
+      alert("Fitur berbagi akan memungkinkan Anda membagikan hasil RAB melalui email, WhatsApp, atau media sosial.");
+    }
+
+    // Event listeners
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("searchInput").addEventListener("input", tampilkanData);
+      document.getElementById("sortSelect").addEventListener("change", tampilkanData);
+      
+      // Close modal when clicking outside
+      document.getElementById("demoModal").addEventListener("click", function(e) {
+        if (e.target === this) {
+          tutupModal();
+        }
+      });
+    });
+
+    // Add custom animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from { transform: translateX(50px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideInLeft {
+        from { transform: translateX(-50px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
